@@ -4,6 +4,7 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 const initialState = {
     videos: [],
+    totalPage: 0,
     isLoading: false,
     isError: false,
     error: "",
@@ -12,9 +13,9 @@ const initialState = {
 // async thunk
 export const fetchVideos = createAsyncThunk(
     "videos/fetchVideos",
-    async ({ tags, search }) => {
-        const videos = await getVideos(tags, search);
-        return videos;
+    async ({ tags, search, author, page, limit }) => {
+        const videosData = await getVideos(tags, search, author, page, limit);
+        return videosData;
     }
 );
 
@@ -29,7 +30,8 @@ const videoSlice = createSlice({
             })
             .addCase(fetchVideos.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.videos = action.payload;
+                state.videos = action.payload.videos;
+                state.totalPage = action.payload.totalPage;
             })
             .addCase(fetchVideos.rejected, (state, action) => {
                 state.isLoading = false;

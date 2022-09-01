@@ -6,14 +6,12 @@ import VideoGridItem from "./VideoGridItem";
 
 export default function VideGrid() {
     const dispatch = useDispatch();
-    const { videos, isLoading, isError, error } = useSelector(
-        (state) => state.videos
-    );
-    const { tags, search } = useSelector((state) => state.filter);
+    const { videos, isLoading, isError, error } = useSelector((state) => state.videos);
+    const { tags, search, author, currentPage, limit } = useSelector((state) => state.filter);
 
     useEffect(() => {
-        dispatch(fetchVideos({ tags, search }));
-    }, [dispatch, tags, search]);
+        dispatch(fetchVideos({ tags, search, author, page: currentPage, limit }));
+    }, [dispatch, tags, search, author, currentPage, limit]);
 
     // decide what to render
     let content;

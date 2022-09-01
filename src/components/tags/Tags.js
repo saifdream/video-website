@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTags } from "../../features/tags/tagsSlice";
+import ResetFilter from "../ResetFilter";
 import Tag from "./Tag";
 
 export default function Tags() {
-    const { tags } = useSelector((state) => state.tags);
+    const {tags} = useSelector((state) => state.tags);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -13,10 +14,11 @@ export default function Tags() {
 
     return tags?.length > 0 ? (
         <section>
-            <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 border-b overflow-y-auto">
+            <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 border-b overflow-y-auto relative">
                 {tags.map((tag) => (
                     <Tag key={tag.id} title={tag.title} />
                 ))}
+                <ResetFilter/>
             </div>
         </section>
     ) : null;
