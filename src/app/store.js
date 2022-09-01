@@ -4,10 +4,12 @@ import relatedVideosReducer from "../features/relatedVideos/relatedVideosSlice";
 import tagsReducer from "../features/tags/tagsSlice";
 import videoReducer from "../features/video/videoSlice";
 import videosReducer from "../features/videos/videosSlice";
+import patchVideoReducer from "../features/likeUnLikes/likeUnLikesSlice";
 
 export const store = configureStore({
     reducer: {
-        videos: videosReducer,
+        videos: videosReducer, 
+        patchVideos: patchVideoReducer, 
         tags: tagsReducer,
         video: videoReducer,
         relatedVideos: relatedVideosReducer,

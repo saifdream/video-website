@@ -19,6 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "prod_start": "node server.js",
+    "server": "json-server --port 9000 --watch db.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
