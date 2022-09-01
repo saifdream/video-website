@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import likeImage from "../../assets/like.svg";
 import unlikeImage from "../../assets/unlike.svg";
 import { patchVideo } from "../../features/likeUnLikes/likeUnLikesSlice";

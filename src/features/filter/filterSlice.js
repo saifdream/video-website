@@ -31,6 +31,9 @@ const filterSlice = createSlice({
         setCurrentPage: (state, action) => {
             state.currentPage = action.payload;
         },
+        setPageLimit: (state, action) => {
+            state.limit = +action.payload;
+        },
         resetFilter: (state) => {
             state.tags = [];
             state.search = "";
@@ -42,4 +45,4 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { tagSelected, tagRemoved, searched, authorSelected, setCurrentPage, resetFilter } = filterSlice.actions;
+export const { tagSelected, tagRemoved, searched, authorSelected, setCurrentPage, setPageLimit, resetFilter } = filterSlice.actions;
